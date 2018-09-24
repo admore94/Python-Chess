@@ -99,7 +99,6 @@ class Rook(Piece):
             for s in keylist:
                 if s == position:
                     numInKeyList = n
-
                 n += 1
 
             if self.position[0] == position[0]:
@@ -159,7 +158,6 @@ class Rook(Piece):
                     print('Invalid Move 8')
             else:
                 print('Invalid Move 9')
-
         else:
             print('Invalid Move 10')
 
@@ -203,7 +201,6 @@ class Rook(Piece):
                     break
                 else:
                     break
-
         y = 8 - int(self.position[1])
         if y > 0:
             for i in range(1, y+1):
@@ -243,7 +240,6 @@ class Bishop(Piece):
             for s in keylist:
                 if s == position:
                     numInKeyList = n
-
                 n += 1
 
             x = ord(self.position[0]) - ord(position[0])
@@ -441,8 +437,7 @@ class Knight(Piece):
                             attackablePositionsList.append(keylist[numInKeyList + i])
                         elif self.name[0] == 'B' and boarddict[keylist[numInKeyList + i]][0] == 'W':
                             attackablePositionsList.append(keylist[numInKeyList + i])
-
-
+                            
         return attackablePositionsList
 
 class Queen(Piece):
@@ -456,9 +451,8 @@ class Queen(Piece):
             for s in keylist:
                 if s == position:
                     numInKeyList = n
-
                 n += 1
-
+                
             x = ord(self.position[0]) - ord(position[0])
             y = int(self.position[1]) - int(position[1])
 
@@ -771,7 +765,6 @@ class Pawn(Piece):
             for s in keylist:
                 if s == position:
                     numInKeyList = n
-
                 n += 1
 
             if position[0] == self.position[0]:
@@ -864,20 +857,18 @@ class Pawn(Piece):
                 if s == self.position:
                     numInKeyList = n
                 n += 1
-
+                
         positions1 = [7, 9]
         for i in positions1:
             if numInKeyList + i < 64:
                 if self.name[0] == 'B' and boarddict[keylist[numInKeyList + i]][0] == 'W':
                     attackablePositionsList.append(keylist[numInKeyList + i])
-
         positions2 = [-7, -9]
         for i in positions2:
             if 0 <= numInKeyList + i:
                 if self.name[0] == 'W' and boarddict[keylist[numInKeyList + i]][0] == 'B':
                     attackablePositionsList.append(keylist[numInKeyList + i])
-
-
+                    
         return attackablePositionsList
 
 def checkforcheck():
@@ -893,7 +884,6 @@ def checkforcheck():
             if boarddict[k] == list[28].name:
                 if k in list[i].attackablePositions():
                     return 2
-
     return 0
 
 def checkforcheckmate():
@@ -911,7 +901,6 @@ def checkforcheckmate():
                                 return False
                             else:
                                 list[i].undoMove()
-
     elif checkforcheck() == 2:
         for i in range(16):
             squares = list[i].attackablePositions()
@@ -925,10 +914,6 @@ def checkforcheckmate():
                             else:
                                 list[i].undoMove()
     return True
-
-
-
-
 
 boarddict = {
     'A8': 'BR1',
@@ -1063,18 +1048,12 @@ objectdict = {
     'G1': 62,
     'H1': 63,
     }
+
 listofkeys = []
 for i in boarddict:
     listofkeys.append(boarddict[i])
-
-
-
-# copyboarddict = dict(boarddict)
-#
+    
 list = []
-# for key, value in boarddict.items():
-#     list.append(Queen(value, key))
-
 list.append(Rook('BR1', 'A8'))
 list.append(Knight('BK1', 'B8'))
 list.append(Bishop('BB1', 'C8'))
@@ -1108,28 +1087,6 @@ list.append(Bishop('WB2', 'F1'))
 list.append(Knight('WK2', 'G1'))
 list.append(Rook('WR2', 'H1'))
 
-# Board(boarddict)
-# list[16].move('A4')
-# Board(boarddict)
-# list[24].move('A3')
-# Board(boarddict)
-# list[24].move('H3')
-# Board(boarddict)
-# list[20].move('E3')
-# Board(boarddict)
-# list[29].move('A6')
-# Board(boarddict)
-# list[29].move('B7')
-# Board(boarddict)
-# list[29].undoMove()
-# Board(boarddict)
-
-
-#
-#
-#
-# print(list[50].position)
-# print(list[15].attackablePositions())
 player = 1
 a = 0
 while True:
@@ -1187,4 +1144,4 @@ while True:
 
 print('Player ' + str(a) + ' wins!')
 Board(boarddict)
-print(list[29].attackablePositions())
+
